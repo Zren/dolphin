@@ -258,6 +258,19 @@ bool ViewProperties::sortFoldersFirst() const
     return m_node->sortFoldersFirst();
 }
 
+void ViewProperties::setSortHiddenFilesLast(bool hiddenFilesLast)
+{
+    if (m_node->sortHiddenFilesLast() != hiddenFilesLast) {
+        m_node->setSortHiddenFilesLast(hiddenFilesLast);
+        update();
+    }
+}
+
+bool ViewProperties::sortHiddenFilesLast() const
+{
+    return m_node->sortHiddenFilesLast();
+}
+
 void ViewProperties::setVisibleRoles(const QList<QByteArray>& roles)
 {
     if (roles == visibleRoles()) {
@@ -366,6 +379,7 @@ void ViewProperties::setDirProperties(const ViewProperties& props)
     setSortRole(props.sortRole());
     setSortOrder(props.sortOrder());
     setSortFoldersFirst(props.sortFoldersFirst());
+    setSortHiddenFilesLast(props.sortHiddenFilesLast());
     setVisibleRoles(props.visibleRoles());
     setHeaderColumnWidths(props.headerColumnWidths());
     m_node->setVersion(props.m_node->version());

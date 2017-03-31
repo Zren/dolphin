@@ -217,6 +217,10 @@ public:
     void setSortFoldersFirst(bool foldersFirst);
     bool sortFoldersFirst() const;
 
+    /** Sets a seperate sorting with hidden files last (true) or a mixed sorting of hidden files mixed with regular files (false). */
+    void setSortHiddenFilesLast(bool hiddenFilesLast);
+    bool sortHiddenFilesLast() const;
+
     /** Sets the additional information which should be shown for the items. */
     void setVisibleRoles(const QList<QByteArray>& roles);
 
@@ -474,6 +478,12 @@ signals:
      */
     void sortFoldersFirstChanged(bool foldersFirst);
 
+    /**
+     * Is emitted if the sorting of files and folders (separate with hidden files
+     * last or mixed) has been changed.
+     */
+    void sortHiddenFilesLastChanged(bool hiddenFilesLast);
+
     /** Is emitted if the additional information shown for this view has been changed. */
     void visibleRolesChanged(const QList<QByteArray>& current,
                              const QList<QByteArray>& previous);
@@ -666,6 +676,12 @@ private slots:
      * sorting of files and folders (separate with folders first or mixed) given by \a foldersFirst.
      */
     void updateSortFoldersFirst(bool foldersFirst);
+
+    /**
+     * Updates the view properties of the current URL to the
+     * sorting of hidden files (separate with hidden files last or mixed) given by \a hiddenFilesLast.
+     */
+    void updateSortHiddenFilesLast(bool hiddenFilesLast);
 
     /**
      * Indicates in the status bar that the delete operation
