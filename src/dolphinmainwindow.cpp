@@ -1695,7 +1695,7 @@ void DolphinMainWindow::setupDockWidgets()
     DolphinDockWidget* infoDock = new DolphinDockWidget(i18nc("@title:window", "Information"));
     infoDock->setLocked(lock);
     infoDock->setObjectName(QStringLiteral("infoDock"));
-    infoDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    // infoDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 
 #ifdef HAVE_BALOO
     InformationPanel* infoPanel = new InformationPanel(infoDock);
@@ -1739,7 +1739,7 @@ void DolphinMainWindow::setupDockWidgets()
     DolphinDockWidget* foldersDock = new DolphinDockWidget(i18nc("@title:window", "Folders"));
     foldersDock->setLocked(lock);
     foldersDock->setObjectName(QStringLiteral("foldersDock"));
-    foldersDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    // foldersDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     FoldersPanel* foldersPanel = new FoldersPanel(foldersDock);
     foldersPanel->setCustomContextMenuActions({lockLayoutAction});
     foldersDock->setWidget(foldersPanel);
@@ -1823,7 +1823,7 @@ void DolphinMainWindow::setupDockWidgets()
     DolphinDockWidget* placesDock = new DolphinDockWidget(i18nc("@title:window", "Places"));
     placesDock->setLocked(lock);
     placesDock->setObjectName(QStringLiteral("placesDock"));
-    placesDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    // placesDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 
     m_placesPanel = new PlacesPanel(placesDock);
     m_placesPanel->setCustomContextMenuActions({lockLayoutAction});
