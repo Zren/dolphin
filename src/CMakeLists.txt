@@ -214,6 +214,7 @@ set(dolphinstatic_SRCS
     dolphinurlnavigatorscontroller.cpp
     trash/dolphintrash.cpp
     filterbar/filterbar.cpp
+    panels/buttongroup/buttongrouppanel.cpp
     panels/places/placespanel.cpp
     panels/places/placesitem.cpp
     panels/places/placesitemlistgroupheader.cpp
