@@ -37,6 +37,7 @@
 #include "panels/places/placespanel.h"
 #include "panels/information/informationpanel.h"
 #include "panels/terminal/terminalpanel.h"
+#include "panels/buttongroup/buttongrouppanel.h"
 #include "settings/dolphinsettingsdialog.h"
 #include "statusbar/dolphinstatusbar.h"
 #include "views/dolphinviewactionhandler.h"
@@ -82,6 +83,7 @@
 #include <QDesktopServices>
 #include <QDialog>
 #include <QFileInfo>
+#include <QKeySequence>
 #include <QLineEdit>
 #include <QMenu>
 #include <QMenuBar>
@@ -1887,6 +1889,25 @@ void DolphinMainWindow::setupDockWidgets()
         "space on this panel and select <interface>Show Hidden Places"
         "</interface> to display it again.</para>") + panelWhatsThis);
 
+    // Setup "Left Buttons"
+    DolphinDockWidget* leftButtonsDock = new DolphinDockWidget(i18nc("@title:window", "Left Buttons"));
+    leftButtonsDock->setLocked(lock);
+    leftButtonsDock->setObjectName(QStringLiteral("leftButtonsDock"));
+
+    ButtonGroupPanel* leftButtonsPanel = new ButtonGroupPanel(leftButtonsDock);
+    leftButtonsDock->setWidget(leftButtonsPanel);
+
+    leftButtonsPanel->setCustomContextMenuActions({lockLayoutAction});
+    leftButtonsPanel->appendAction(actionCollection()->action(KStandardAction::name(KStandardAction::Back)));
+    leftButtonsPanel->appendAction(actionCollection()->action(KStandardAction::name(KStandardAction::Forward)));
+    leftButtonsPanel->appendAction(actionCollection()->action(KStandardAction::name(KStandardAction::Up)));
+    leftButtonsPanel->appendSpacer();
+    leftButtonsPanel->appendAction(actionCollection()->action(QStringLiteral("view_mode")));
+
+    QAction* leftButtonsAction = leftButtonsDock->toggleViewAction();
+    createPanelAction(QIcon::fromTheme(QStringLiteral("arrow-left")), *(new QKeySequence()), leftButtonsAction, QStringLiteral("show_leftbuttons_panel"));
+    addDockWidget(Qt::RightDockWidgetArea, leftButtonsDock);
+
     // Add actions into the "Panels" menu
     KActionMenu* panelsMenu = new KActionMenu(i18nc("@action:inmenu View", "Show Panels"), this);
     actionCollection()->addAction(QStringLiteral("panels"), panelsMenu);
@@ -1899,6 +1920,7 @@ void DolphinMainWindow::setupDockWidgets()
 #endif
     panelsMenu->addAction(ac->action(QStringLiteral("show_folders_panel")));
     panelsMenu->addAction(ac->action(QStringLiteral("show_terminal_panel")));
+    panelsMenu->addAction(ac->action(QStringLiteral("show_leftbuttons_panel")));
     panelsMenu->addSeparator();
     panelsMenu->addAction(actionShowAllPlaces);
     panelsMenu->addAction(lockLayoutAction);
