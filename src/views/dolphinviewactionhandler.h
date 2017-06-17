@@ -33,6 +33,19 @@ class QActionGroup;
 class DolphinView;
 class KActionCollection;
 
+enum ViewPreset
+{
+    HugeIconsView = 0,
+    LargeIconsView,
+    MediumIconsView,
+    CompactView, // Windows calls this "List"
+    TilesView,
+    DetailsView
+};
+/// Allow using ViewPreset in QVariant
+Q_DECLARE_METATYPE(ViewPreset)
+
+
 /**
  * @short Handles all actions for DolphinView
  *
@@ -167,6 +180,11 @@ private Q_SLOTS:
     void slotZoomLevelChanged(int current, int previous);
 
     /**
+     * Show the displaying of additional information by \a roleName.
+     */
+    void setVisibleRole(const char* roleName, bool show);
+
+    /**
      * Switches on or off the displaying of additional information
      * as specified by \a action.
      */
@@ -248,6 +266,12 @@ private:
      * toggleAdditionalInfo().
      */
     QActionGroup* createFileItemRolesActionGroup(const QString& groupPrefix);
+
+    /**
+     * Returns a generated "switch to view mode preset" action.
+     * Helper method for createActions();
+     */
+    KToggleAction* viewPresetAction(ViewPreset viewPreset, const QString& actionName, const QString& viewPresetLabel, const QString& iconName);
 
     /**
      * Returns the "switch to icons mode" action.
