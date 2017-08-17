@@ -117,6 +117,7 @@ DolphinMainWindow::DolphinMainWindow() :
     m_controlButton(nullptr),
     m_updateToolBarTimer(nullptr),
     m_lastHandleUrlStatJob(nullptr),
+    m_tempMenuBar(false),
     m_terminalPanel(nullptr),
     m_placesPanel(nullptr),
     m_tearDownFromPlacesRequested(false),
@@ -610,6 +611,23 @@ void DolphinMainWindow::readProperties(const KConfigGroup& group)
     m_tabWidget->readProperties(group);
 }
 
+void DolphinMainWindow::keyPressEvent(QKeyEvent* event)
+{
+    if (event->key() == Qt::Key_Alt) {
+        tempShowMenuBar();
+    }
+    KXmlGuiWindow::keyPressEvent(event);
+}
+
+
+void DolphinMainWindow::keyReleaseEvent(QKeyEvent* event)
+{
+    if (event->key() == Qt::Key_Alt) {
+        cancelTempShowMenuBar();
+    }
+    KXmlGuiWindow::keyReleaseEvent(event);
+}
+
 void DolphinMainWindow::updateNewMenu()
 {
     m_newFileMenu->setViewShowsHiddenFiles(activeViewContainer()->view()->hiddenFilesShown());
@@ -955,6 +973,23 @@ void DolphinMainWindow::toggleShowMenuBar()
         createControlButton();
     } else {
         deleteControlButton();
+    }
+}
+
+void DolphinMainWindow::tempShowMenuBar()
+{
+    const bool visible = menuBar()->isVisible();
+    if (!visible) {
+        m_tempMenuBar = true;
+        menuBar()->setVisible(true);
+    }
+}
+
+void DolphinMainWindow::cancelTempShowMenuBar()
+{
+    if (m_tempMenuBar) {
+        menuBar()->setVisible(false);
+        m_tempMenuBar = false;
     }
 }
 
