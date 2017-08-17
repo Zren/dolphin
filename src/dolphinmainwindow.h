@@ -20,6 +20,7 @@
 #endif
 
 #include <QIcon>
+#include <QKeyEvent>
 #include <QList>
 #include <QMenu>
 #include <QPointer>
@@ -220,6 +221,12 @@ protected:
     /** @see KMainWindow::readProperties() */
     void readProperties(const KConfigGroup& group) override;
 
+    /** @see QMainWindow::keyPressEvent() */
+    virtual void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
+
+    /** @see QMainWindow::keyReleaseEvent() */
+    virtual void keyReleaseEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
+
     /** Handles QWhatsThisClickedEvent and passes all others on. */
     bool event(QEvent* event) override;
     /** Handles QWhatsThisClickedEvent and passes all others on. */
@@ -376,6 +383,12 @@ private Q_SLOTS:
      * visible if it is hidden.
      */
     void toggleShowMenuBar();
+
+    /* If menu bar is not visible, temporarily show it. */
+    void tempShowMenuBar();
+
+    /* If temporarily showing the menu bar, hide it. */
+    void cancelTempShowMenuBar();
 
     /** Updates "Open Preferred Search Tool" action. */
     void updateOpenPreferredSearchToolAction();
@@ -658,6 +671,8 @@ private:
     QTimer* m_updateToolBarTimer;
 
     KIO::OpenUrlJob *m_lastHandleUrlOpenJob;
+
+    bool m_tempMenuBar;
 
     TerminalPanel* m_terminalPanel;
     PlacesPanel* m_placesPanel;
