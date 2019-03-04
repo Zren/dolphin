@@ -84,7 +84,7 @@
         </entry>
         <entry name="CloseActiveSplitView" type="Bool">
             <label>Close active pane when toggling off split view</label>
-            <default>true</default>
+            <default>false</default>
         </entry>
         <entry name="ShowToolTips" type="Bool">
             <label>Show tooltips</label>
