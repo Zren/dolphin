@@ -128,7 +128,9 @@ DolphinView::DolphinView(const QUrl& url, QWidget* parent) :
     m_view->setEnlargeSmallPreviews(GeneralSettings::enlargeSmallPreviews());
 
     m_container = new KItemListContainer(controller, this);
-    m_container->setFrameShape(QFrame::Box);
+    m_container->setFrameShape(QFrame::NoFrame);
+    m_container->setAutoFillBackground(true);
+    m_container->setBackgroundRole(QPalette::Base);
     m_container->installEventFilter(this);
     setFocusProxy(m_container);
     connect(m_container->horizontalScrollBar(), &QScrollBar::valueChanged, this, [=] { hideToolTip(); });

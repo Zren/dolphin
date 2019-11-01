@@ -123,7 +123,7 @@ DolphinStatusBar::DolphinStatusBar(QWidget* parent) :
     m_progressBar->setMaximumWidth(fontMetrics.averageCharWidth() * 25);
 
     QHBoxLayout* topLayout = new QHBoxLayout(this);
-    topLayout->setContentsMargins(2, 0, 2, 0);
+    topLayout->setContentsMargins(8, 0, 8, 0);
     topLayout->setSpacing(4);
     topLayout->addWidget(m_label, 1);
     topLayout->addWidget(m_zoomSlider, 1);

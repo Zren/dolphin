@@ -215,6 +215,8 @@ DolphinViewContainer::DolphinViewContainer(const QUrl& url, QWidget* parent) :
 
     // Initialize status bar
     m_statusBar = new DolphinStatusBar(this);
+    m_statusBar->setAutoFillBackground(true);
+    m_statusBar->setBackgroundRole(QPalette::Base);
     m_statusBar->setUrl(m_view->url());
     m_statusBar->setZoomLevel(m_view->zoomLevel());
     connect(m_view, &DolphinView::urlChanged,
