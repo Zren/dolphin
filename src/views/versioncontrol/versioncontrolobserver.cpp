@@ -109,15 +109,17 @@ QList<QAction*> VersionControlObserver::actions(const KFileItemList& items) cons
         return {};
     }
 
-    if (isVersionControlled()) {
-        return m_plugin->versionControlActions(items);
-    } else {
-        QList<QAction*> actions;
-        for (const auto &plugin : qAsConst(m_plugins)) {
-            actions << plugin.first->outOfVersionControlActions(items);
-        }
-        return actions;
-    }
+    return {};
+
+    // if (isVersionControlled()) {
+    //     return m_plugin->versionControlActions(items);
+    // } else {
+    //     QList<QAction*> actions;
+    //     for (const auto &plugin : qAsConst(m_plugins)) {
+    //         actions << plugin.first->outOfVersionControlActions(items);
+    //     }
+    //     return actions;
+    // }
 }
 
 void VersionControlObserver::delayedDirectoryVerification()
