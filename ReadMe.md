@@ -2,7 +2,7 @@
 
 This is a fork of the Dolphin file browser that patches in a couple of features.
 
-![](https://i.imgur.com/6ESZLS9.png)
+![](https://i.imgur.com/ZUdWkaL.png)
 
 * Sort hidden files and folders last  
   Eg: The hidden folder `.git` would be at the bottom of the file list after all the non-hidden files.  
