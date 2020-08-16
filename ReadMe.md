@@ -6,7 +6,7 @@ This is a fork of the Dolphin file browser that patches in a couple of features.
 
 * Sort hidden files and folders last  
   Eg: The hidden folder `.git` would be at the bottom of the file list after all the non-hidden files.  
-  [[Bug #333219](https://bugs.kde.org/show_bug.cgi?id=333219)] Mentions the issue is a WontFix since 0.1% users probably want it.
+  [[Bug #333219](https://bugs.kde.org/show_bug.cgi?id=333219)] Mentions the issue is a WontFix since of 0.1% users probably want it.
 * Closing split view will close the inactive view by default instead of needing to configure it.  
   https://phabricator.kde.org/D18040
 * Left/Right panels will extend to the bottom when there's a bottom panel (more room for bookmarks while the terminal is visible).  
@@ -16,12 +16,16 @@ This is a fork of the Dolphin file browser that patches in a couple of features.
   The buttons are not configurable like a toolbar unfortunately.
 * Added a few "View Modes" which will toggle "Preview" automatically, and "Zoom" to specific sizes which are familiar to Windows users.  
   Huge Icons, Large Icons, and Tiled view mode presets.
+* Show a capacity bar for devices in the "places" sidebar.
 * ~~When a folder is a mount point (usb/hard drive/partition), show a capacity bar in the "Size" column instead of the number of files it contains.~~  
   Removed this feature for now. Instead we only show a capacity bar in the "places" sidebar.
 * In the Places panel, moved devices above the recently saved and search but below bookmarks.
 * ~~Select child folder when going up~~  
   [[Bug #315471](https://bugs.kde.org/show_bug.cgi?id=315471)] closed as invalid (because you should be going "back").  
   [[Bug #377392](https://bugs.kde.org/show_bug.cgi?id=377392)] should be a duplicate, but contains a patch by the creator.
+* Removed the frame (that gets highlighted) around the icon area.
+* Use patches by /u/Luwx to make the statusbar use bg color of item view.  
+  https://www.reddit.com/r/kde/comments/bqnorv/with_the_right_layout_kde_apps_can_look_really/
 
 
 This fork isn't always up to date with KDE/Dolphin's master branch. To see what is missing, [compare the branches](https://github.com/Zren/dolphin/compare/zren...KDE:master).
