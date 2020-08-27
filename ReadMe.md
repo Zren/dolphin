@@ -20,9 +20,8 @@ This is a fork of the Dolphin file browser that patches in a couple of features.
 * ~~When a folder is a mount point (usb/hard drive/partition), show a capacity bar in the "Size" column instead of the number of files it contains.~~  
   Removed this feature for now. Instead we only show a capacity bar in the "places" sidebar.
 * In the Places panel, moved devices above the recently saved and search but below bookmarks.
-* ~~Select child folder when going up~~  
-  [[Bug #315471](https://bugs.kde.org/show_bug.cgi?id=315471)] closed as invalid (because you should be going "back").  
-  [[Bug #377392](https://bugs.kde.org/show_bug.cgi?id=377392)] should be a duplicate, but contains a patch by the creator.
+* ~~Select child folder when going up. [[Bug #315471](https://bugs.kde.org/show_bug.cgi?id=315471)] closed as invalid (because you should be going "back"). [[Bug #377392](https://bugs.kde.org/show_bug.cgi?id=377392)] should be a duplicate, but contains a patch by the creator.~~  
+  Feature has been in Dolphin since v17.12.
 * Removed the frame (that gets highlighted) around the icon area.
 * Use patches by /u/Luwx to make the statusbar use bg color of item view.  
   https://www.reddit.com/r/kde/comments/bqnorv/with_the_right_layout_kde_apps_can_look_really/
