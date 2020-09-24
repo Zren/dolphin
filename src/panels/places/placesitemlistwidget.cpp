@@ -105,6 +105,8 @@ void PlacesItemListWidget::resetCapacityBar()
     m_freeSpaceInfo.size = 0;
     m_freeSpaceInfo.used = 0;
     m_freeSpaceInfo.usedRatio = 0;
+    delete m_freeSpaceInfo.job;
+    m_freeSpaceInfo.lastUpdated = QDateTime();
 }
 
 void PlacesItemListWidget::polishEvent()
